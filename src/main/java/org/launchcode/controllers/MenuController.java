@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "menu")
-public class ManuController {
+public class MenuController {
 
     @Autowired
     private MenuDao menuDao;
@@ -66,7 +66,7 @@ public class ManuController {
     @RequestMapping(value = "add-item/{menuId}", method = RequestMethod.GET)
     public String addItem(Model model, @PathVariable int menuId) {
         Menu aMenu = menuDao.findOne(menuId);
-        model.addAttribute("title", "Add an item to your " + aMenu.getName() + " Menu");
+        model.addAttribute("title", "Add an item to your " + aMenu.getName() + " menu");
         AddMenuItemForm aForm = new AddMenuItemForm(aMenu, cheeseDao.findAll());
         model.addAttribute("form", aForm);
         return "menu/add-item";
